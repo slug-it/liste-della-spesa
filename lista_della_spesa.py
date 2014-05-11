@@ -1,16 +1,16 @@
 from datetime import datetime
 from collections import namedtuple
 
-ListItem = namedtuple("ListItem", ["value", "creator", "time_added"])
-ReplacedListItem = namedtuple("ReplacedListItem", ["value", "creator", "time_added", "original"])
+ListItem = namedtuple("ListItem", ["value", "user", "time_added"])
+ReplacedListItem = namedtuple("ReplacedListItem", ["value", "user", "time_added", "original"])
 
 class ListaDellaSpesa:
-    def __init__(self, creator=None):
-        self.creator = creator
+    def __init__(self, user=None):
+        self.user = user
         self._list = {}
-    def add(self, item, creator=None, time_added=None):
+    def add(self, item, user=None, time_added=None):
         self._list[item] = ListItem(item,
-                                    creator or self.creator,
+                                    user or self.user,
                                     time_added or datetime.now())
     def remove(self, item):
         del self._list[item]
@@ -22,9 +22,9 @@ class ListaDellaSpesa:
         for item in self._list:
             if item.lower().startswith(text.lower()):
                 yield item
-    def replace(self, old, new, creator=None, time_added=None):
+    def replace(self, old, new, user=None, time_added=None):
         self._list[new] = ReplacedListItem(new,
-                                    creator or self.creator,
+                                    user or self.user,
                                     time_added or datetime.now(),
                                     ListItem(*self._list[old][:3]))
         del self._list[old]

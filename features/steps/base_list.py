@@ -29,11 +29,11 @@ def step_impl(context, item1, item2):
 
 @when('{user} adds "{item}" to the list')
 def step_impl(context, user, item):
-    context.alist.add(item, creator=user)
+    context.alist.add(item, user=user)
 
 @then('the item "{item}" is marked as added by {user}')
 def step_impl(context, item, user):
-    assert_that(context.alist.info(item).creator, is_(equal_to(user)))
+    assert_that(context.alist.info(item).user, is_(equal_to(user)))
 
 @then('the item "{item1}" is marked as added before than "{item2}"')
 def step_impl(context, item1, item2):
@@ -74,7 +74,7 @@ def step_impl(context):
 def step_impl(context, new, old, user):
     old_item = context.alist.info(new).original
     assert_that(old_item.value, is_(equal_to(old)))
-    assert_that(old_item.creator, is_(equal_to(user)))
+    assert_that(old_item.user, is_(equal_to(user)))
 
 @when('she removes "{item}"')
 def step_impl(context, item):
