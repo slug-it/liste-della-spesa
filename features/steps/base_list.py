@@ -75,3 +75,7 @@ def step_impl(context, new, old, user):
     old_item = context.alist.info(new).original
     assert_that(old_item.value, is_(equal_to(old)))
     assert_that(old_item.creator, is_(equal_to(user)))
+
+@when('she removes "{item}"')
+def step_impl(context, item):
+    context.alist.remove(item)

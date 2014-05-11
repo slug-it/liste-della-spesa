@@ -43,3 +43,15 @@ Feature: base list interactions
         | Organic Lemons |
       and the item "Organic Lemons" is marked as added by Alice
       and the original of "Organic Lemons" is "Lemons" and marked as added by Bob
+
+  Scenario: Alice removes one item from an existing list
+    Given we have a list created by Alice containing
+        |    item    |
+        | Blue socks |
+        | Oranges    |
+        | T-shirt    |
+      when she removes "Oranges"
+      then the list is
+        |    item    |
+        | Blue socks |
+        | T-shirt    |

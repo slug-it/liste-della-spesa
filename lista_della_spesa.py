@@ -12,6 +12,8 @@ class ListaDellaSpesa:
         self._list[item] = ListItem(item,
                                     creator or self.creator,
                                     time_added or datetime.now())
+    def remove(self, item):
+        del self._list[item]
     def get(self):
         return sorted(self._list)
     def info(self, item):
