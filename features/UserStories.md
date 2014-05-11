@@ -15,7 +15,7 @@ Riempimento lista con elemento simile
 Alice aggiunge alla lista "Sale", nella lista era già presente "Sale grosso".
 Durante l'inserimento viene mostrato come completamento automatico il "Sale
 grosso" ma con uno stile diverso che significa *elemento già in lista*.
-finale 1) Alice voleva giusto il sale grosso e lo sceglie,
+finale 1) Alice voleva proprio il sale grosso e lo sceglie,
 finale 2) Alice specifica "Sale fino" e lo aggiunge alla lista.
 
 Sostituzione di un elemento
