@@ -14,7 +14,7 @@ Riempimento lista con elemento simile
 
 Alice aggiunge alla lista "Sale", nella lista era già presente "Sale grosso".
 Durante l'inserimento viene mostrato come completamento automatico il "Sale
-grosso" ma con uno stile diverso che significa <elemento già in lista>.
+grosso" ma con uno stile diverso che significa *elemento già in lista*.
 finale 1) Alice voleva giusto il sale grosso e lo sceglie,
 finale 2) Alice specifica "Sale fino" e lo aggiunge alla lista.
 
@@ -22,7 +22,7 @@ Sostituzione di un elemento
 ---------------------------
 
 Alice vede che Bob ha aggiunto "Limoni" alla lista, però dato che vuole fare
-una torta preferice specificare che devono essere biologici.
+una torta preferisce specificare che devono essere biologici.
 La tap-tap sui "Limoni" e nel campo di testo specifica "Limoni Bio".
 
 Rimozione di un elemento
@@ -38,7 +38,7 @@ Posticipazione di un elemento
 Bob aveva scritto "Tofu" nella lista della spesa, perché voleva fare una
 ricetta particolare per degli ospiti. Però la cena è rimandata di una settimana.
 Bob tiene premuto su "Tofu" e dal menù sceglie [fra una settimana].
-Dopo 5gg "Tofu" compare di nuovo nella lista con l'icona <elemento posticipato>.
+Dopo 5gg "Tofu" compare di nuovo nella lista con l'icona *elemento posticipato*.
 
 Spesa normale
 -------------
@@ -56,9 +56,9 @@ Spesa con elemento ricorrente
 Alice è a fare la spesa, attiva la modalità "Spesa" e comincia a segnare le
 cose messe nel carrello, quando arriva ai "Biscotti", dato che sa che non
 durano più di una settimana, invece di segnarli come comprati tiene premuto e
-li segna come <nella lista della prossima settimana>.
+li segna come *nella lista della prossima settimana*.
 I biscotti verranno aggiunti automaticamente alla lista dopo 5gg con l'icona
-di <elemento ricorrente>.
+di *elemento ricorrente*.
 
 Spesa connessa
 --------------
@@ -91,5 +91,3 @@ Riempimento lista vocale
 Alice ha le mani occupate ma vuole segnare "Mele" nella lista, allora preme il
 pulsante [Volume Su] e pronuncia "Mele".
 Alla fine del riconoscimento vocale la parola viene aggiunta alla lista.
-
-
