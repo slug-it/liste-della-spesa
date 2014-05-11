@@ -53,7 +53,7 @@ def step_impl(context, user):
 def step_impl(context, user, item):
     if user in ['she', 'he']:
         user = None
-    context.complete_suggestion = context.alist.complete(item, user)
+    context.complete_suggestion = next(context.alist.complete(item))
 
 @then('the suggestion is "{item}"')
 def step_impl(context, item):

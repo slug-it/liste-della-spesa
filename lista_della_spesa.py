@@ -16,10 +16,10 @@ class ListaDellaSpesa:
         return sorted(self._list)
     def info(self, item):
         return self._list[item]
-    def complete(self, text, user=None):
+    def complete(self, text):
         for item in self._list:
             if item.lower().startswith(text.lower()):
-                return item
+                yield item
     def replace(self, old, new, creator=None, time_added=None):
         self._list[new] = ReplacedListItem(new,
                                     creator or self.creator,
