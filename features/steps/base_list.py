@@ -29,7 +29,7 @@ def step_impl(context, item1, item2):
 
 @when('{user} adds "{item}" to the list')
 def step_impl(context, user, item):
-    context.alist.add(item)
+    context.alist.add(item, creator=user)
 
 @then('the item "{item}" is marked as added by {user}')
 def step_impl(context, item, user):
@@ -49,12 +49,29 @@ def step_impl(context, user):
         item = row['item']
         context.execute_steps('when {user} adds "{item}" to the list'.format(**locals()))
 
-@when('she types "{item}"')
-def step_impl(context, item):
-    context.complete_suggestion = context.alist.complete(item)
+@when('{user} types "{item}"')
+def step_impl(context, user, item):
+    if user in ['she', 'he']:
+        user = None
+    context.complete_suggestion = context.alist.complete(item, user)
 
 @then('the suggestion is "{item}"')
 def step_impl(context, item):
     assert_that(context.complete_suggestion, is_(item))
 
+@when('{user} replaces "{old}" with "{new}"')
+def step_impl(context, user, old, new):
+    if user in ['she', 'he']:
+        user = None
+    context.alist.replace(old, new, user)
 
+@then('the list is')
+def step_impl(context):
+    items = [row['item'] for row in context.table]
+    assert_that(context.alist.get(), is_(equal_to(items)))
+
+@then('the original of "{new}" is "{old}" and marked as added by {user}')
+def step_impl(context, new, old, user):
+    old_item = context.alist.info(new).original
+    assert_that(old_item.value, is_(equal_to(old)))
+    assert_that(old_item.creator, is_(equal_to(user)))

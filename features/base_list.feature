@@ -30,3 +30,16 @@ Feature: base list interactions
         | T-shirt    |
       when she types "blue"
       then the suggestion is "Blue socks"
+
+  Scenario: Alice renames and element added by Bob
+    Given we have a list created by Bob containing
+        |  item  |
+        | Lemons |
+        | Apples |
+      when Alice replaces "Lemons" with "Organic Lemons"
+      then the list is
+        |      item      |
+        | Apples         |
+        | Organic Lemons |
+      and the item "Organic Lemons" is marked as added by Alice
+      and the original of "Organic Lemons" is "Lemons" and marked as added by Bob
