@@ -40,12 +40,14 @@ def step_impl(context, item1, item2):
     assert_that(context.alist.info(item1).time_added,
                 is_(less_than(context.alist.info(item2).time_added)))
 
-@given('we have a list created by {user} containing "{item}"')
-def step_impl(context, user, item):
+@given('we have a list created by {user} containing')
+def step_impl(context, user):
     context.execute_steps('''
         Given we have an empty list created by {user}
-        when {user} adds "{item}" to the list
     '''.format(**locals()))
+    for row in context.table:
+        item = row['item']
+        context.execute_steps('when {user} adds "{item}" to the list'.format(**locals()))
 
 @when('she types "{item}"')
 def step_impl(context, item):

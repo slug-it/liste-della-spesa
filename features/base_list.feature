@@ -24,9 +24,9 @@ Feature: base list interactions
       then the item "Banana" is marked as added before than "Milk"
 
   Scenario: Alice adds one item to an existing list
-     Given we have a list created by Alice containing "Blue socks"
-         when she types "blue"
-         then the suggestion is "Blue socks"
-
-
-
+    Given we have a list created by Alice containing
+        |    item    |
+        | Blue socks |
+        | T-shirt    |
+      when she types "blue"
+      then the suggestion is "Blue socks"
