@@ -79,3 +79,11 @@ def step_impl(context, new, old, user):
 @when('she removes "{item}"')
 def step_impl(context, item):
     context.alist.remove(item)
+
+@when('{user} postpones by {ndays:d} days the item "{item}"')
+def step_impl(context, user, ndays, item):
+    if user in ['she', 'he']:
+        user = None
+    from datetime import timedelta
+    context.alist.postpone(item, timedelta(days=ndays), user)
+

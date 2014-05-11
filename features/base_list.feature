@@ -55,3 +55,16 @@ Feature: base list interactions
         |    item    |
         | Blue socks |
         | T-shirt    |
+
+  Scenario: Bob postpones one item
+    Given we have a list created by Bob containing
+        |   item   |
+        | Lemons   |
+        | Apples   |
+        | Tomatoes |
+      when he postpones by 7 days the item "Apples"
+      then the list is
+        |   item   |
+        | Lemons   |
+        | Tomatoes |
+
