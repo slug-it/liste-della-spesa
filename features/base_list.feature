@@ -63,8 +63,24 @@ Feature: base list interactions
         | Apples   |
         | Tomatoes |
       when he postpones by 7 days the item "Apples"
-      then the list is
+      then the list does not contains "Apples"
+      then the list contains "Apples"
+
+  Scenario: Bob postpones one item
+    Given we have a list created by Bob containing
         |   item   |
         | Lemons   |
+        | Apples   |
         | Tomatoes |
+      and 4 days ago he postponed by 7 days the item "Apples"
+      then the list does not contains "Apples"
+      then the list contains "Apples"
 
+  Scenario: Bob postpones one item
+    Given we have a list created by Bob containing
+        |   item   |
+        | Lemons   |
+        | Apples   |
+        | Tomatoes |
+      and 6 days ago he postponed by 7 days the item "Apples"
+      then the list contains "Apples"

@@ -1,5 +1,6 @@
 from behave import *
 from hamcrest import *
+not_ = is_not
 
 from lista_della_spesa import ListaDellaSpesa
 
@@ -18,6 +19,10 @@ def step_impl(context, item):
 @then('the list contains "{item}"')
 def step_impl(context, item):
     assert_that(context.alist.get(), has_item(item))
+
+@then('the list does not contains "{item}"')
+def step_impl(context, item):
+    assert_that(context.alist.get(), not_(has_item(item)))
 
 @then('the list contains {count:d} item')
 def step_impl(context, count):
@@ -82,8 +87,14 @@ def step_impl(context, item):
 
 @when('{user} postpones by {ndays:d} days the item "{item}"')
 def step_impl(context, user, ndays, item):
+    ndays_ago = 0
+    context.execute_steps('given {ndays_ago:d} days ago {user} postponed by {ndays:d} days the item "{item}"'.format(**locals()))
+
+@given('{ndays_ago:d} days ago {user} postponed by {ndays:d} days the item "{item}"')
+def step_impl(context, ndays_ago, user, ndays, item):
     if user in ['she', 'he']:
         user = None
-    from datetime import timedelta
-    context.alist.postpone(item, timedelta(days=ndays), user)
+    from datetime import datetime, timedelta
+    context.alist.postpone(item, timedelta(days=ndays), user,
+                           time_postponed=datetime.now()-timedelta(days=ndays_ago))
 
