@@ -17,7 +17,7 @@ def step_impl(context, item):
 
 @then('the list contains "{item}"')
 def step_impl(context, item):
-    assert_that(context.alist.get(), contains(item))
+    assert_that(context.alist.get(), has_item(item))
 
 @then('the list contains {count:d} item')
 def step_impl(context, count):
