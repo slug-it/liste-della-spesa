@@ -23,7 +23,7 @@ Sostituzione di un elemento
 
 Alice vede che Bob ha aggiunto "Limoni" alla lista, però dato che vuole fare
 una torta preferisce specificare che devono essere biologici.
-La tap-tap sui "Limoni" e nel campo di testo specifica "Limoni Bio".
+Fa tap-tap sui "Limoni" e nel campo di testo specifica "Limoni Bio".
 
 Rimozione di un elemento
 ------------------------
